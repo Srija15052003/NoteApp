@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    </head>
+<body>
+    <header>
+        <h1>My Notes</h1>
+    </header>
+
+    <div class="container">
+        <section class="note-input">
+            <h2>Add a New Note</h2>
+            <input type="text" id="note-title" placeholder="Note Title">
+            <textarea id="note-content" rows="10" placeholder="Note Content"></textarea>
+            <button onclick="addNote()">Add Note</button>
+        </section>
+
+        <section class="note-container" id="note-container">
+        </section>
+    </div>
+<footer>
+    <p>&copy; 2024 Note-Taking Website</p>
+</footer>
+
+<style>
+body {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color:cornsilk;
+    color: #333;
+}
+
+.container-fluid {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    box-shadow: 0 4px 2px -2px gray;
+}
+
+header h1 {
+       font-size: 2.5em;
+}
+
+.note-input {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.note-input h2 {
+    margin-top: 0;
+    color: #4CAF50;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.note-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.note {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 10px;
+    padding: 15px;
+    position: relative;
+}
+
+.note h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.5em;
+    color: #4CAF50;
+}
+
+.note p {
+    font-size: 1em;
+    line-height: 1.5;
+    color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .note-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .note {
+        width: 90%;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+</style>
+    
+<script>
+    function addNote() {
+    const noteContainer = document.getElementById('note-container');
+    const noteTitle = document.getElementById('note-title').value;
+    const noteContent = document.getElementById('note-content').value;
+
+    if (noteTitle && noteContent) {
+        const note = document.createElement('div');
+        note.className = 'note';
+
+        const title = document.createElement('h2');
+        title.textContent = noteTitle;
+
+        const content = document.createElement('p');
+        content.textContent = noteContent;
+
+        note.appendChild(title);
+        note.appendChild(content);
+        noteContainer.appendChild(note);
+
+        document.getElementById('note-title').value = '';
+        document.getElementById('note-content').value = '';
+    } else {
+        alert('Please fill out both fields.');
+    }
+}
+</script>
+</body>
+</html>
